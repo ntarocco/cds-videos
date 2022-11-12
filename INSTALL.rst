@@ -11,7 +11,7 @@ Install `ffmpeg` and ensure that `ffprobe` is in your PATH:
     $ ffprobe
     ... ffprobe version 3.3.3 ...
 
-Prepare the environment. You will need NodeJS v8:
+Prepare the environment. You will need NodeJS v14:
 
 .. code-block:: console
 
@@ -35,6 +35,8 @@ Install production like setup
     (cds3)$ pip install -r requirements.pinned.txt
     (cds3)$ pip install -e .
 
+On recent MacOS version, if you have a build failure while installing, try prepending the `pip install`
+cmd with `SYSTEM_VERSION_COMPAT=1`.
 Or to install the latest released versions of all the dependencies
 
 .. code-block:: console

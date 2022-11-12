@@ -19,7 +19,6 @@
 
 """CDS Previewer API."""
 
-from __future__ import absolute_import, print_function
 
 import re
 from os.path import join, relpath, split

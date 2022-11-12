@@ -19,7 +19,6 @@
 
 """CDS Home UI."""
 
-from __future__ import absolute_import, print_function
 
 from flask import Blueprint, render_template
 from flask_babelex import lazy_gettext as _

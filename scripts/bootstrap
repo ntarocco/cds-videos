@@ -30,7 +30,7 @@ CWD=`pwd`
 requirements_file=${1:-'requirements.pinned.txt'}
 
 pip install -r $requirements_file
-pip install -e .[all]
+pip install -e .
 
 npm update
 npm install -g \

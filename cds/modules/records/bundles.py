@@ -19,7 +19,6 @@
 
 """JS/CSS bundles for Records."""
 
-from __future__ import absolute_import, print_function
 
 from flask_assets import Bundle
 from invenio_assets import NpmBundle

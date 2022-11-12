@@ -19,7 +19,6 @@
 
 """CDS FFmpeg wrappers."""
 
-from __future__ import absolute_import, print_function
 
 from .ffmpeg import ff_frames, ff_probe, ff_probe_all
 

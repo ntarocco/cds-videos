@@ -24,8 +24,6 @@
 
 """CDS base Invenio configuration."""
 
-from __future__ import absolute_import, print_function
-
 import ast
 import os
 from datetime import timedelta
@@ -38,7 +36,7 @@ from invenio_app.config import APP_DEFAULT_SECURE_HEADERS
 from invenio_deposit.config import DEPOSIT_REST_FACETS
 from invenio_deposit.scopes import write_scope
 from invenio_deposit.utils import check_oauth2_scope
-from invenio_oauthclient.contrib import cern
+from invenio_oauthclient.contrib.keycloak import KeycloakSettingsHelper
 from invenio_opendefinition.config import OPENDEFINITION_REST_ENDPOINTS
 from invenio_records_rest.facets import range_filter, terms_filter
 
@@ -69,7 +67,7 @@ def _parse_env_bool(var_name, default=None):
 
 
 #: Email address for admins.
-CDS_ADMIN_EMAIL = "cds-admin@cern.ch"
+SUPPORT_EMAIL = "no-reply@cern.ch"
 #: Email address for no-reply.
 NOREPLY_EMAIL = "no-reply@cern.ch"
 MAIL_SUPPRESS_SEND = True
@@ -884,12 +882,6 @@ FRONTPAGE_TREND_TOPICS = [
 ###############################################################################
 # Security
 ###############################################################################
-
-# Disable advanced features.
-SECURITY_REGISTERABLE = False
-SECURITY_RECOVERABLE = False
-SECURITY_CONFIRMABLE = False
-SECURITY_CHANGEABLE = False
 PERMANENT_SESSION_LIFETIME = timedelta(1)
 
 # Override login template.
@@ -952,17 +944,36 @@ USERPROFILES_EMAIL_ENABLED = False
 SETTINGS_TEMPLATE = "invenio_theme/page_settings.html"
 
 ###############################################################################
-# OAuth
+# Login/OAuth
 ###############################################################################
+ACCOUNTS_LOCAL_LOGIN_ENABLED = False  # enable local login
+SECURITY_REGISTERABLE = False  # local login: allow users to register
+SECURITY_RECOVERABLE = False  # local login: allow users to reset the password
+SECURITY_CHANGEABLE = False  # local login: allow users to change psw
+SECURITY_CONFIRMABLE = False  # local login: users can confirm e-mail address
+SECURITY_LOGIN_WITHOUT_CONFIRMATION = False # require users to confirm email before being able to login
 
-OAUTHCLIENT_REMOTE_APPS = dict(
-    cern=cern.REMOTE_APP,
+_keycloak_helper = KeycloakSettingsHelper(
+    title="CERN",
+    description="CERN SSO authentication",
+    base_url="https://auth.cern.ch/",
+    realm="cern",
+    app_key="CERN_APP_CREDENTIALS"
 )
-#: Credentials for CERN OAuth (must be changed to work).
-CERN_APP_CREDENTIALS = dict(
-    consumer_key=os.environ.get("OAUTH_CERN_CONSUMER_KEY", "changeme"),
-    consumer_secret=os.environ.get("OAUTH_CERN_CONSUMER_SECRET", "changeme"),
-)
+OAUTHCLIENT_CERN_REALM_URL = _keycloak_helper.realm_url
+OAUTHCLIENT_CERN_USER_INFO_URL = _keycloak_helper.user_info_url
+OAUTHCLIENT_CERN_VERIFY_EXP = True
+OAUTHCLIENT_CERN_VERIFY_AUD = False
+
+OAUTHCLIENT_REMOTE_APPS = {
+    "cern": _keycloak_helper.remote_app,
+}
+
+# secrets will be injected on deployment
+CERN_APP_CREDENTIALS = {
+    "consumer_key": "CHANGE ME",
+    "consumer_secret": "CHANGE ME",
+}
 
 # Set the template
 OAUTH2SERVER_SETTINGS_TEMPLATE = "cds_theme/settings.html"

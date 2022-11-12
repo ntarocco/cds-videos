@@ -24,7 +24,6 @@
 
 """CDS files rest receivers."""
 
-from __future__ import absolute_import, print_function
 
 from os.path import splitext
 

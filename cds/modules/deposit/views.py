@@ -24,7 +24,6 @@
 
 """CDS interface."""
 
-from __future__ import absolute_import, print_function
 
 from flask import (Blueprint, abort, current_app, flash, redirect,
                    render_template, url_for)

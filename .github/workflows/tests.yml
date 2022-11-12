@@ -59,7 +59,7 @@ jobs:
 
       - name: Generate dependencies
         run: |
-          python -m pip install --upgrade "pip>=20,<21" "setuptools>=40,<46" py
+          python -m pip install --upgrade "pip>=20,<21" "setuptools<58" py
           python -m pip install wheel coveralls requirements-builder configparser
           pip freeze
           cat requirements.pinned.txt > .ci-${{ matrix.python-version }}-requirements.txt

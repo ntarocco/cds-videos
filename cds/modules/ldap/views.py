@@ -19,7 +19,6 @@
 
 """CDS LDAP views."""
 
-from __future__ import absolute_import, print_function
 import ldap
 
 from flask import Blueprint, jsonify, make_response, request, \

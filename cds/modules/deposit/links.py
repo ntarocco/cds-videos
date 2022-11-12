@@ -24,7 +24,6 @@
 
 """Links for record serialization."""
 
-from __future__ import absolute_import, print_function
 
 from flask import current_app, request, url_for
 from invenio_records_files.links import default_bucket_link_factory

@@ -24,7 +24,6 @@
 
 """Test CDS report number generation."""
 
-from __future__ import absolute_import, print_function
 
 from flask_security import login_user
 from invenio_accounts.models import User

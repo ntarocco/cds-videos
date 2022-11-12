@@ -24,7 +24,6 @@
 
 """CDS files rest app for file download receivers."""
 
-from __future__ import absolute_import, print_function
 
 from invenio_files_rest.signals import file_downloaded
 

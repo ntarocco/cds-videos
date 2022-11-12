@@ -24,7 +24,6 @@
 
 """Test serializers."""
 
-from __future__ import absolute_import, print_function
 
 import xml.etree.ElementTree as ET
 

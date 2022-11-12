@@ -24,8 +24,6 @@
 
 """CDSDeposit app for Webhook receivers."""
 
-from __future__ import absolute_import, print_function
-
 from invenio_base.signals import app_loaded
 from invenio_deposit.signals import post_action
 from invenio_indexer.signals import before_record_index

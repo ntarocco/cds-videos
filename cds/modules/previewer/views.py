@@ -19,7 +19,6 @@
 
 """CDS Previewer."""
 
-from __future__ import absolute_import, print_function
 
 from flask import Blueprint, abort, current_app, request
 from flask_talisman import ALLOW_FROM

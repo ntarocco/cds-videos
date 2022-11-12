@@ -24,7 +24,6 @@
 
 """Links for record serialization."""
 
-from __future__ import absolute_import, print_function
 
 from cds.modules.deposit.api import is_project_record, project_resolver
 from cds.modules.records.permissions import deposit_update_permission_factory

@@ -24,7 +24,6 @@
 
 """CDS redirector views."""
 
-from __future__ import absolute_import, print_function
 
 from cds.modules.records.api import Record
 from flask import Blueprint, abort, current_app, redirect, request, url_for

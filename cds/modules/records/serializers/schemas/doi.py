@@ -19,7 +19,6 @@
 
 """DOI field."""
 
-from __future__ import absolute_import, print_function
 
 import idutils
 from flask_babelex import lazy_gettext as _

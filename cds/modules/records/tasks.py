@@ -23,7 +23,6 @@
 # as an Intergovernmental Organization or submit itself to any jurisdiction.
 """Records tasks."""
 
-from __future__ import absolute_import, print_function
 
 import json
 import os.path
@@ -277,7 +276,7 @@ def file_integrity_report():
         )
         body = format_file_integrity_report(report)
         sender = current_app.config["NOREPLY_EMAIL"]
-        recipients = [current_app.config["CDS_ADMIN_EMAIL"]]
+        recipients = [current_app.config["SUPPORT_EMAIL"]]
         _send_email(subject, body, sender, recipients)
 
 
@@ -452,7 +451,7 @@ def subformats_integrity_report(start_date=None, end_date=None):
         )
         body = _format_report(report)
         sender = current_app.config["NOREPLY_EMAIL"]
-        recipients = [current_app.config["CDS_ADMIN_EMAIL"]]
+        recipients = [current_app.config["SUPPORT_EMAIL"]]
         _send_email(subject, body, sender, recipients)
 
 
@@ -579,5 +578,5 @@ def missing_subformats_report(start_date=None, end_date=None):
         )
         body = _format_report(report)
         sender = current_app.config["NOREPLY_EMAIL"]
-        recipients = [current_app.config["CDS_ADMIN_EMAIL"]]
+        recipients = [current_app.config["SUPPORT_EMAIL"]]
         _send_email(subject, body, sender, recipients)

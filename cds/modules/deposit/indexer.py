@@ -24,8 +24,6 @@
 
 """Deposit Indexer."""
 
-from __future__ import absolute_import, print_function
-
 from invenio_indexer.api import RecordIndexer
 from invenio_jsonschemas import current_jsonschemas
 from invenio_pidstore.models import PersistentIdentifier

@@ -19,7 +19,6 @@
 
 """CDS Stats."""
 
-from __future__ import absolute_import, print_function
 
 from cds.modules.records.permissions import record_read_permission_factory
 from elasticsearch import Elasticsearch

@@ -24,7 +24,6 @@
 
 """Persistent identifier minters."""
 
-from __future__ import absolute_import, print_function
 
 import idutils
 from flask import current_app
